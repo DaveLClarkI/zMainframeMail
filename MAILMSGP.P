@@ -1,0 +1,368 @@
+* $. LST LST=SYSLST,DISP=D,CLASS=Z                                              
+// JOB    MAILMSGP   PURGE MAINFRAME MAIL MESSAGE FILES                         
+// EXEC   PROC=QJ16LIB                                                          
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */                 
+/* UPSI SETTINGS:                                            */                 
+/*  0 - UNUSED                                               */                 
+/*  1 - UNUSED                                               */                 
+/*  2 - UNUSED                                               */                 
+/*  3 - UNUSED                                               */                 
+/*  4 - UNUSED                                               */                 
+/*  5 - UNUSED                                               */                 
+/*  6 - IF ON, PURGE DETAILS; ELSE, JUST COUNT THEM.         */                 
+/*  7 - IF ON, PURGE HEADERS -- IF DETAIL PURGE SPECIFIED.   */                 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */                 
+// UPSI   00000011                                                              
+// EXEC   PGM=QUKBJOB,SIZE=256K                                                 
+OPTION LIST=NO,SEQCHK=NO,BWZ=NO,ZEROPRT=YES,PRNTLCT=0                           
+                                                                                
+INFKSDS    0255S      LBL=MAILMID                                               
+EQU MAILMID-RECORD INF1-255                                                     
+EQU MAILMID-RECORD                                                              
+EQU  MID-KEY       (8)                                                          
+EQU  MID-KEY                                                                    
+EQU   MID-ID       (8)-B 0                                                      
+EQU  MID-DATA      (247)                                                        
+EQU  MID-DATA                                                                   
+EQU   MID-CREATED  (8)-P 0                                                      
+EQU   MID-CHANGED  (8)-P 0                                                      
+EQU   MID-SENT     (8)-P 0                                                      
+EQU   MID-COMPLETE (1)                                                          
+EQU   MID-DELIVERY (1)                                                          
+EQU   MID-PRIVATE  (1)                                                          
+EQU   MID-SYSTEM   (2)                                                          
+EQU   MID-TOGRP    (25)                                                         
+EQU   MID-FROM     (64)                                                         
+EQU   MID-SUBJECT  (64)                                                         
+EQU   MID-CREATEBY (8)                                                          
+EQU   MID-UPDATEBY (8)                                                          
+                                                                                
+DETKSDS    0255S      LBL=MAILMSG                                               
+EQU MAILMSG-RECORD DET1-255                                                     
+EQU MAILMSG-RECORD                                                              
+EQU  MSG-KEY       (11)                                                         
+EQU  MSG-KEY                                                                    
+EQU   MSG-ID       (8)-B 0                                                      
+EQU   MSG-SEQ      (3)-P 0                                                      
+EQU  MSG-BODY      (244)                                                        
+                                                                                
+INDKSDS    0036S      LBL=MAILMDS                                               
+EQU MAILMDS-RECORD IND1-36                                                      
+EQU MAILMDS-RECORD                                                              
+EQU  MDS-KEY       (11)                                                         
+EQU  MDS-KEY                                                                    
+EQU   MDS-ID       (8)-B 0                                                      
+EQU   MDS-SEQ      (3)-P 0                                                      
+EQU  MDS-TOGRP     (25)                                                         
+                                                                                
+EQU WORKINGSTORAGE WST                                                          
+* FYI..KEEP-DAYS BELOW DOES NOT PURGE INCOMPLETE OR UNSENT MESSAGES             
+EQU KEEP-DAYS      (2)   C'45'                                                  
+* FYI..FORCE-PURGE DELETES EVERYTHING PAST THIS AGING POINT                     
+EQU FORCE-PURGE    (3)   C'180'                                                 
+*                                                                               
+EQU REC-CNT        (5)-P ZERO                                                   
+EQU SEL-CNT        (5)-P ZERO                                                   
+EQU MID-CNT        (5)-P ZERO                                                   
+EQU MSG-CNT        (5)-P ZERO                                                   
+EQU MDS-CNT        (5)-P ZERO                                                   
+EQU WRK-SUBJECT    (50)                                                         
+EQU WRK-MULT       (4)-P 0 ZERO                                                 
+EQU WRK-TIME       (4)-P 0 ZERO                                                 
+*                                                                               
+EQU WRK-CREATED    (15)                                                         
+EQU WRK-CREATED                                                                 
+EQU  WRK-C-DATE    (8)   SPACES                                                 
+EQU  WRK-C-FILL    (1)   SPACES                                                 
+EQU  WRK-C-TIME    (6) 0 C'000000'                                              
+*                                                                               
+EQU WRK-SENT       (15)                                                         
+EQU WRK-SENT                                                                    
+EQU  WRK-S-DATE    (8)   SPACES                                                 
+EQU  WRK-S-FILL    (1)   SPACES                                                 
+EQU  WRK-S-TIME    (6) 0 C'000000'                                              
+*                                                                               
+EQU CUR-TSTAMP     (8)-P 0 ZERO                                                 
+EQU KEEP-TSTAMP    (8)-P 0 ZERO                                                 
+EQU FORCE-TSTAMP   (8)-P 0 ZERO                                                 
+EQU WRK-DAYS       (6)-P 0 ZERO                                                 
+*                                                                               
+EQU ABS-PARMS      (44)                                                         
+EQU ABS-PARMS                                                                   
+EQU  ABS-TIME      (8)-P 0 ZERO                                                 
+EQU  ABS-DAYS      (6)-P 0 ZERO                                                 
+EQU  ABS-HOURS     (2)-P 0 ZERO                                                 
+EQU  ABS-MINUTES   (2)-P 0 ZERO                                                 
+EQU  ABS-SECONDS   (2)-P 0 ZERO                                                 
+EQU  ABS-UNITS     (4)-P 0 ZERO                                                 
+EQU  ABS-WORK      (20)                                                         
+*                                                                               
+EQU DTE-PARMS      (32)                                                         
+EQU DTE-PARMS                                                                   
+EQU  DTE-REQU      (1)     SPACES                                               
+EQU  DTE-RETN      (1)     SPACES                                               
+EQU  DTE-GREG      (10)    SPACES                                               
+EQU  DTE-GREG                                                                   
+EQU   DTE-GFLR     (2)                                                          
+EQU   DTE-YYMD     (8)                                                          
+EQU  DTE-JULN      (8)     SPACES                                               
+EQU  DTE-TOTD      (4)-P 0 ZERO                                                 
+EQU  DTE-MNTH      (2)-P 0 ZERO                                                 
+EQU  DTE-DAYN      (1)-P 0 ZERO                                                 
+EQU  DTE-LEEP      (1)     SPACES                                               
+EQU  DTE-FILL      (4)     SPACES                                               
+*                                                                               
+EQU FILE           (7)                                                          
+EQU VERB           (9)                                                          
+*                                                                               
+EQU OPT-SWITCHES   (8)                                                          
+EQU OPT-SWITCHES                                                                
+EQU  OPT-UPSI0     (1)                                                          
+EQU  OPT-UPSI1     (1)                                                          
+EQU  OPT-UPSI2     (1)                                                          
+EQU  OPT-UPSI3     (1)                                                          
+EQU  OPT-UPSI4     (1)                                                          
+EQU  OPT-UPSI5     (1)                                                          
+EQU  PRG-DETAILS   (1)                                                          
+EQU  PRG-HEADERS   (1)                                                          
+                                                                                
+    HDR 1A 1 $JOBNAM$      Mainframe Mail Message Purge     Page: $PG$          
+    HDR 2A                                                  $IPLDYYYY$          
+    HDR 3A                                                                      
+                                                                                
+    REPORT    MID-ID       (MESSAGE-ID)                                         
+      SPACE01 WRK-CREATED  (CREATED-DATE/TIME)                                  
+      SPACE01 WRK-SENT     (LAST_SENT-DATE/TIME)                                
+      SPACE01 MID-COMPLETE (C)                                                  
+      SPACE01 MID-TOGRP    (TO-GROUP)                                           
+      SPACE01 WRK-SUBJECT  (SUBJECT)                                            
+                                                                                
+    CALL ASKTIME           CUR-TSTAMP                                           
+    MOVE CUR-TSTAMP     TO ABS-TIME                                             
+    CALL ABSTIME           ABS-PARMS                                            
+    MOVE ABS-DAYS       TO WRK-DAYS                                             
+    SUB  KEEP-DAYS    FROM WRK-DAYS                                             
+    MULT WRK-DAYS 0D    BY C'86400000' 0D GIVING KEEP-TSTAMP 0D                 
+    MOVE ABS-DAYS       TO WRK-DAYS                                             
+    SUB  FORCE-PURGE  FROM WRK-DAYS                                             
+    MULT WRK-DAYS 0D    BY C'86400000' 0D GIVING FORCE-TSTAMP 0D                
+                                                                                
+    MOVE @VAL-DOS-UPSI  TO OPT-SWITCHES                                         
+                                                                                
+* LOOP ON EXISTING MAIL HEADER RECORDS                                          
+100 MOVE C'MAILMID'     TO FILE                                                 
+    MOVE C'      GET'   TO VERB                                                 
+    GET INF ATEND 500                                                           
+                                                                                
+    IF MID-ID = ZERO                                                            
+       GOTO 100                                                                 
+    ENDIF                                                                       
+                                                                                
+    ADD  P'1'           TO REC-CNT                                              
+                                                                                
+    IF MID-CREATED < FORCE-TSTAMP                                               
+       GOTO 110                                                                 
+    ENDIF                                                                       
+                                                                                
+    IF ( MID-SENT = ZERO                                                        
+    OR   MID-COMPLETE <> C'Y'                                                   
+    OR   KEEP-TSTAMP <= MID-CREATED )                                           
+       GOTO 100                                                                 
+    ENDIF                                                                       
+                                                                                
+* SELECT RECORD FOR PURGE PROCESSING                                            
+110 ADD  P'1'           TO SEL-CNT                                              
+                                                                                
+* CONVERT CREATED TIMESTAMP                                                     
+    MOVE MID-CREATED    TO ABS-TIME                                             
+    CALL ABSTIME           ABS-PARMS                                            
+    ADD  P'693596'      TO ABS-DAYS                                             
+    MOVE C'T'           TO DTE-REQU                                             
+    MOVE ABS-DAYS       TO DTE-TOTD                                             
+    CALL DTEMAN            DTE-PARMS                                            
+    MOVE DTE-YYMD       TO WRK-C-DATE                                           
+    IF ABS-UNITS > P'499'                                                       
+      IF ABS-SECONDS = P'59'                                                    
+        IF ABS-MINUTES = P'59'                                                  
+          ADD  P'1'     TO ABS-HOURS                                            
+          MOVE P'0'     TO ABS-MINUTES                                          
+        ELSE                                                                    
+          ADD  P'1'     TO ABS-MINUTES                                          
+        ENDIF                                                                   
+        MOVE P'0'       TO ABS-SECONDS                                          
+      ELSE                                                                      
+        ADD  P'1'       TO ABS-SECONDS                                          
+      ENDIF                                                                     
+    ENDIF                                                                       
+    MOVE ZEROES         TO WRK-TIME                                             
+    MULT ABS-HOURS 0D   BY C'10000' 0D GIVING WRK-MULT 0D                       
+    ADD  WRK-MULT       TO WRK-TIME                                             
+    MULT ABS-MINUTES 0D BY C'100' 0D GIVING WRK-MULT 0D                         
+    ADD  WRK-MULT       TO WRK-TIME                                             
+    ADD  ABS-SECONDS    TO WRK-TIME                                             
+    MOVE WRK-TIME       TO WRK-C-TIME                                           
+                                                                                
+* CONVERT SENT TIMESTAMP                                                        
+    MOVE SPACES         TO WRK-SENT                                             
+    IF  MID-SENT <> ZERO                                                        
+      MOVE MID-SENT     TO ABS-TIME                                             
+      CALL ABSTIME         ABS-PARMS                                            
+      ADD  P'693596'    TO ABS-DAYS                                             
+      MOVE C'T'         TO DTE-REQU                                             
+      MOVE ABS-DAYS     TO DTE-TOTD                                             
+      CALL DTEMAN          DTE-PARMS                                            
+      MOVE DTE-YYMD     TO WRK-S-DATE                                           
+      IF ABS-UNITS > P'499'                                                     
+        IF ABS-SECONDS = P'59'                                                  
+          IF ABS-MINUTES = P'59'                                                
+            ADD  P'1'   TO ABS-HOURS                                            
+            MOVE P'0'   TO ABS-MINUTES                                          
+          ELSE                                                                  
+            ADD  P'1'   TO ABS-MINUTES                                          
+          ENDIF                                                                 
+          MOVE P'0'     TO ABS-SECONDS                                          
+        ELSE                                                                    
+          ADD  P'1'     TO ABS-SECONDS                                          
+        ENDIF                                                                   
+      ENDIF                                                                     
+      MOVE ZEROES       TO WRK-TIME                                             
+      MULT ABS-HOURS 0D BY C'10000' 0D GIVING WRK-MULT 0D                       
+      ADD  WRK-MULT     TO WRK-TIME                                             
+      MULT ABS-MINUTES 0D BY C'100' 0D GIVING WRK-MULT 0D                       
+      ADD  WRK-MULT     TO WRK-TIME                                             
+      ADD  ABS-SECONDS  TO WRK-TIME                                             
+      MOVE WRK-TIME     TO WRK-S-TIME                                           
+    ENDIF                                                                       
+                                                                                
+* REPORT ON MESSAGES TO BE PURGED                                               
+    MOVE MID-SUBJECT    TO WRK-SUBJECT X'0032'                                  
+    PRINT REPORT                                                                
+                                                                                
+* SET UP TO PURGE MAIL MESSAGE RECORDS                                          
+200 MOVE MID-ID         TO MSG-ID                                               
+    MOVE ZEROES         TO MSG-SEQ                                              
+                                                                                
+    MOVE C'MAILMSG'     TO FILE                                                 
+    MOVE C'SETGENKEY'   TO VERB                                                 
+    SETGENKEY DET USING MSG-KEY GENERIC 8                                       
+    IF @VAL-VSAM-ERR <> C'OK '                                                  
+       IF ( @VAL-VSAM-ERR = C'RNF'                                              
+       OR   @VAL-VSAM-ERR = C'ERR' )                                            
+          GOTO 300                                                              
+       ENDIF                                                                    
+       GOTO 990                                                                 
+    ENDIF                                                                       
+                                                                                
+* LOOP ON SELECTED MAIL MESSAGE RECORDS                                         
+210 MOVE C'      GET'   TO VERB                                                 
+    GET DET ATEND 300                                                           
+    IF MSG-ID NOT = MID-ID                                                      
+       GOTO 300                                                                 
+    ENDIF                                                                       
+                                                                                
+* DELETE SELECTED MAIL MESAGE RECORD                                            
+    IF PRG-DETAILS = C'1'                                                       
+       MOVE C'   DELETE' TO VERB                                                
+       DELETE DET ONERROR 990                                                   
+    ENDIF                                                                       
+    ADD  P'1'           TO MSG-CNT                                              
+    GOTO 210                                                                    
+                                                                                
+* SET UP TO PURGE MESSAGE DISTRIBUTION RECORDS                                  
+300 MOVE MID-ID         TO MDS-ID                                               
+    MOVE ZEROES         TO MDS-SEQ                                              
+                                                                                
+    MOVE C'MAILMDS'     TO FILE                                                 
+    MOVE C'SETGENKEY'   TO VERB                                                 
+    SETGENKEY IND USING MDS-KEY GENERIC 8                                       
+    IF @VAL-VSAM-ERR <> C'OK '                                                  
+       IF ( @VAL-VSAM-ERR = C'RNF'                                              
+       OR   @VAL-VSAM-ERR = C'ERR' )                                            
+          GOTO 400                                                              
+       ENDIF                                                                    
+       GOTO 990                                                                 
+    ENDIF                                                                       
+                                                                                
+* LOOP ON SELECTED MESSAGE DISTRIBUTION RECORDS                                 
+310 MOVE C'      GET'   TO VERB                                                 
+    GET IND ATEND 400                                                           
+    IF MDS-ID NOT = MID-ID                                                      
+       GOTO 400                                                                 
+    ENDIF                                                                       
+                                                                                
+* DELETE SELECTED MESSAGE DISTRIBUTION RECORDS                                  
+    IF PRG-DETAILS = C'1'                                                       
+       MOVE C'   DELETE' TO VERB                                                
+       DELETE IND ONERROR 990                                                   
+    ENDIF                                                                       
+    ADD  P'1'           TO MDS-CNT                                              
+    GOTO 310                                                                    
+                                                                                
+* DELETE SELECTED MAIL HEADER RECORD                                            
+400 MOVE C'MAILMID'     TO FILE                                                 
+    IF ( PRG-HEADERS = C'1'                                                     
+     AND PRG-DETAILS = C'1' )                                                   
+       MOVE C'   DELETE' TO VERB                                                
+       DELETE INF ONERROR 990                                                   
+    ENDIF                                                                       
+    ADD  P'1'           TO MID-CNT                                              
+    GOTO 100                                                                    
+                                                                                
+* PRINT PROCESSING STATISTICS                                                   
+500 DOHEADERS                                                                   
+    MOVE C' RECORDS READ......' TO PRT1                                         
+    MOVE REC-CNT        TO PRT21 0                                              
+    PRINT                                                                       
+                                                                                
+    MOVE C' RECORDS SELECTED..' TO PRT1                                         
+    MOVE SEL-CNT        TO PRT21 0                                              
+    PRINT                                                                       
+                                                                                
+    IF PRG-DETAILS = C'1'                                                       
+       MOVE C' DETAILS PURGED....' TO PRT1                                      
+    ELSE                                                                        
+       MOVE C' DETAILS NOTED.....' TO PRT1                                      
+    ENDIF                                                                       
+    MOVE MSG-CNT        TO PRT21 0                                              
+    PRINT                                                                       
+                                                                                
+    IF PRG-DETAILS = C'1'                                                       
+       MOVE C' DISTRIB PURGED....' TO PRT1                                      
+    ELSE                                                                        
+       MOVE C' DISTRIB NOTED.....' TO PRT1                                      
+    ENDIF                                                                       
+    MOVE MDS-CNT        TO PRT21 0                                              
+    PRINT                                                                       
+                                                                                
+    IF ( PRG-HEADERS = C'1'                                                     
+     AND PRG-DETAILS = C'1' )                                                   
+       MOVE C' HEADERS PURGED....' TO PRT1                                      
+    ELSE                                                                        
+       MOVE C' HEADERS NOTED.....' TO PRT1                                      
+    ENDIF                                                                       
+    MOVE MID-CNT        TO PRT21 0                                              
+    PRINT                                                                       
+                                                                                
+    MOVE C'0000'        TO @VAL-RETURN-CD                                       
+                                                                                
+    GOTO EOJ                                                                    
+                                                                                
+* VSAM ERROR ROUTINE                                                            
+990 MOVE C' VSAM '      TO PRT1                                                 
+    MOVE VERB           TO PRT7                                                 
+    MOVE C' ERROR - '   TO PRT16                                                
+    MOVE FILE           TO PRT25                                                
+    MOVE C' - RC='      TO PRT32                                                
+    MOVE @VAL-VSAM-RC   TO PRT38 0N                                             
+    MOVE C', EC='       TO PRT41                                                
+    MOVE @VAL-VSAM-EC   TO PRT46 0N                                             
+    MOVE C' ('          TO PRT49                                                
+    MOVE @VAL-VSAM-ERR  TO PRT51                                                
+    MOVE C')'           TO PRT54                                                
+    PRINT                                                                       
+    MOVE C'0016'        TO @VAL-RETURN-CD                                       
+    ABEND                                                                       
+                                                                                
+999 END                                                                         
+/* EOD                                                                          
+/& EOJ                                                                          

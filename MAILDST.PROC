@@ -1,0 +1,28 @@
+// EXEC   PGM=IDCAMS,SIZE=AUTO                                                  
+   DELETE WIN.MF.MAIL.DIST.FILE                                       -         
+          CLUSTER  NOERASE  PURGE                                     -         
+          CATALOG(DAPSCO.DEVL.CATALOG)                                          
+   SET MAXCC = 0                                                                
+   DEFINE CLUSTER( NAME('WIN.MF.MAIL.DIST.FILE')                      -         
+                   INDEXED                                            -         
+                   FREESPACE(0 0)                                     -         
+                   KEYS(28 0)                                         -         
+                   RECORDSIZE(96 255)                                 -         
+                   NOREPLICATE                                        -         
+                   REUSE                                              -         
+                   SHAREOPTIONS(4 3)                                  -         
+                 )                                                    -         
+          DATA   ( NAME('WIN.MF.MAIL.DIST.DATA')                      -         
+                   CYLINDERS(1 1)                                     -         
+                   VOLUMES( IDD033  )                                 -         
+                   CISZ(8192)                                         -         
+                   SPEED                                              -         
+                 )                                                    -         
+          INDEX  ( NAME('WIN.MF.MAIL.DIST.INDEX')                     -         
+                   TRACKS(1 1)                                        -         
+                   VOLUMES( IDD033  )                                 -         
+                   CISZ(1024)                                         -         
+                 )                                                    -         
+          CATALOG(DAPSCO.DEVL.CATALOG)                                          
+   IF MAXCC > 0 THEN CANCEL JOB                                                 
+/* EOD                                                                          

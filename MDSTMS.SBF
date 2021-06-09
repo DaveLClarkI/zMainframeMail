@@ -1,0 +1,997 @@
+* ¦¦¦¦¦¦ SBF SOURCE MDSTMS                                                      
+MDST    TITLE  'M D S T M S     ( 0 1 . 1 0 )   -   M F   M A I L   D IXMDST0001
+                S T R I B U T I O N   M A I N T E N A N C E '           MDST0002
+MDSTMS  DFHMSD TYPE=&SYSPARM,                                          XMDST0003
+               STORAGE=AUTO,                                           XMDST0004
+               CURSLOC=YES,                                            XMDST0005
+               DATA=FIELD,                                             XMDST0006
+               DSATTS=(COLOR,HILIGHT),                                 XMDST0007
+               LANG=COBOL,                                             XMDST0008
+               MAPATTS=(COLOR,HILIGHT),                                XMDST0009
+               MODE=INOUT,                                             XMDST0010
+               TERM=3270,                                              XMDST0011
+               TIOAPFX=YES                                              MDST0012
+*                                                                       MDST0013
+        PRINT  ON,GEN                                                   MDST0014
+        TITLE  'L I S T M A P   ( 0 1 . 1 5 )   -   M F   M A I L   D IXMDST0015
+                S T R I B U T I O N   L I S T   M A P       '           MDST0016
+LISTMAP DFHMDI SIZE=(27,132)                                            MDST0017
+*              ROW=07,THRU=07,OCCURS=18                                 MDST0018
+        PRINT  ON,NOGEN                                                 MDST0019
+        DFHMDF POS=(01,001),LENGTH=004,ATTRB=(ASKIP,NORM),             XMDST0020
+               INITIAL='MDST',                                         XMDST0021
+               COLOR=BLUE                                               MDST0022
+* CBLDNM LABEL=LIST-COMPANY                                             MDST0023
+F010046 DFHMDF POS=(01,046),LENGTH=040,ATTRB=(ASKIP,BRT),              XMDST0024
+               COLOR=TURQUOISE                                          MDST0025
+* CBLDNM LABEL=LIST-SYSDATE                                             MDST0026
+F010121 DFHMDF POS=(01,121),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0027
+               COLOR=BLUE                                               MDST0028
+* CBLDNM LABEL=LIST-NETNAME                                             MDST0029
+F010133 DFHMDF POS=(02,001),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0030
+               COLOR=BLUE                                               MDST0031
+        DFHMDF POS=(02,047),LENGTH=038,ATTRB=(ASKIP,BRT),              XMDST0032
+               INITIAL='Mainframe Mail Distribution Group List',       XMDST0033
+               COLOR=NEUTRAL                                            MDST0034
+* CBLDNM LABEL=LIST-SYSTIME                                             MDST0035
+F010253 DFHMDF POS=(02,121),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0036
+               COLOR=BLUE                                               MDST0037
+        DFHMDF POS=(03,001),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0038
+        DFHMDF POS=(04,001),LENGTH=001,ATTRB=(ASKIP,BRT),              XMDST0039
+               INITIAL='O',                                            XMDST0040
+               COLOR=TURQUOISE                                          MDST0041
+        DFHMDF POS=(04,005),LENGTH=025,ATTRB=(ASKIP,BRT),              XMDST0042
+               INITIAL='          Group          ',                    XMDST0043
+               COLOR=TURQUOISE                                          MDST0044
+        DFHMDF POS=(04,033),LENGTH=050,ATTRB=(ASKIP,BRT),              XMDST0045
+               INITIAL='                      Group                    XMDST0046
+                  ',                                                   XMDST0047
+               COLOR=TURQUOISE                                          MDST0048
+        DFHMDF POS=(04,086),LENGTH=012,ATTRB=(ASKIP,BRT),              XMDST0049
+               INITIAL='    Usage   ',                                 XMDST0050
+               COLOR=TURQUOISE                                          MDST0051
+        DFHMDF POS=(04,101),LENGTH=019,ATTRB=(ASKIP,BRT),              XMDST0052
+               INITIAL='---- Last Used ----',                          XMDST0053
+               COLOR=TURQUOISE                                          MDST0054
+        DFHMDF POS=(04,123),LENGTH=008,ATTRB=(ASKIP,BRT),              XMDST0055
+               INITIAL='Updated',                                      XMDST0056
+               COLOR=TURQUOISE                                          MDST0057
+        DFHMDF POS=(05,001),LENGTH=001,ATTRB=(ASKIP,BRT),              XMDST0058
+               INITIAL='p',                                            XMDST0059
+               COLOR=TURQUOISE,                                        XMDST0060
+               HILIGHT=UNDERLINE                                        MDST0061
+        DFHMDF POS=(05,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0062
+        DFHMDF POS=(05,005),LENGTH=025,ATTRB=(ASKIP,BRT),              XMDST0063
+               INITIAL='          Name           ',                    XMDST0064
+               COLOR=TURQUOISE,                                        XMDST0065
+               HILIGHT=UNDERLINE                                        MDST0066
+        DFHMDF POS=(05,031),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0067
+        DFHMDF POS=(05,033),LENGTH=050,ATTRB=(ASKIP,BRT),              XMDST0068
+               INITIAL='                   Description                 XMDST0069
+                  ',                                                   XMDST0070
+               COLOR=TURQUOISE,                                        XMDST0071
+               HILIGHT=UNDERLINE                                        MDST0072
+        DFHMDF POS=(05,084),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0073
+        DFHMDF POS=(05,086),LENGTH=012,ATTRB=(ASKIP,BRT),              XMDST0074
+               INITIAL='    Count   ',                                 XMDST0075
+               COLOR=TURQUOISE,                                        XMDST0076
+               HILIGHT=UNDERLINE                                        MDST0077
+        DFHMDF POS=(05,099),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0078
+        DFHMDF POS=(05,101),LENGTH=010,ATTRB=(ASKIP,BRT),              XMDST0079
+               INITIAL='   Date   ',                                   XMDST0080
+               COLOR=TURQUOISE,                                        XMDST0081
+               HILIGHT=UNDERLINE                                        MDST0082
+        DFHMDF POS=(05,112),LENGTH=008,ATTRB=(ASKIP,BRT),              XMDST0083
+               INITIAL='   By   ',                                     XMDST0084
+               COLOR=TURQUOISE,                                        XMDST0085
+               HILIGHT=UNDERLINE                                        MDST0086
+        DFHMDF POS=(05,121),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0087
+        DFHMDF POS=(05,123),LENGTH=008,ATTRB=(ASKIP,BRT),              XMDST0088
+               INITIAL='   By   ',                                     XMDST0089
+               COLOR=TURQUOISE,                                        XMDST0090
+               HILIGHT=UNDERLINE                                        MDST0091
+        DFHMDF POS=(05,132),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0092
+* CBLDNM LABEL=LIST-GRPNAME-SKIPTO                                      MDST0093
+F010665 DFHMDF POS=(06,005),LENGTH=025,ATTRB=(UNPROT,NORM,IC),         XMDST0094
+               COLOR=YELLOW,                                           XMDST0095
+               HILIGHT=UNDERLINE                                        MDST0096
+        DFHMDF POS=(06,031),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0097
+* CBLDNM LABEL=LIST-GRPDESC-FILTER                                      MDST0098
+F010693 DFHMDF POS=(06,033),LENGTH=050,ATTRB=(UNPROT,NORM),            XMDST0099
+               COLOR=YELLOW,                                           XMDST0100
+               HILIGHT=UNDERLINE                                        MDST0101
+        DFHMDF POS=(06,084),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0102
+* CBLDNM LABEL=LIST-USECOUNT-FILTER                                     MDST0103
+F010746 DFHMDF POS=(06,086),LENGTH=012,ATTRB=(UNPROT,NORM),            XMDST0104
+               COLOR=YELLOW,                                           XMDST0105
+               HILIGHT=UNDERLINE                                        MDST0106
+        DFHMDF POS=(06,099),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0107
+* CBLDNM LABEL=LIST-LASTUSED-FILTER                                     MDST0108
+F010761 DFHMDF POS=(06,101),LENGTH=010,ATTRB=(UNPROT,NORM),            XMDST0109
+               COLOR=YELLOW,                                           XMDST0110
+               HILIGHT=UNDERLINE                                        MDST0111
+* CBLDNM LABEL=LIST-LASTUSEBY-FILTER                                    MDST0112
+F010772 DFHMDF POS=(06,112),LENGTH=008,ATTRB=(UNPROT,NORM),            XMDST0113
+               COLOR=YELLOW,                                           XMDST0114
+               HILIGHT=UNDERLINE                                        MDST0115
+        DFHMDF POS=(06,121),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0116
+* CBLDNM LABEL=LIST-UPDATEDBY-FILTER                                    MDST0117
+F010783 DFHMDF POS=(06,123),LENGTH=008,ATTRB=(UNPROT,NORM),            XMDST0118
+               COLOR=YELLOW,                                           XMDST0119
+               HILIGHT=UNDERLINE                                        MDST0120
+        DFHMDF POS=(06,132),LENGTH=000,ATTRB=(ASKIP,BRT)                MDST0121
+* CBLDNM LABEL=LIST-SELECT                                              MDST0122
+F010793 DFHMDF POS=(07,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0123
+               COLOR=YELLOW,                                           XMDST0124
+               HILIGHT=UNDERLINE                                        MDST0125
+        DFHMDF POS=(07,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0126
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0127
+F010797 DFHMDF POS=(07,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0128
+               COLOR=YELLOW                                             MDST0129
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0130
+F010825 DFHMDF POS=(07,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0131
+               COLOR=NEUTRAL                                            MDST0132
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0133
+F010878 DFHMDF POS=(07,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0134
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0135
+               COLOR=BLUE                                               MDST0136
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0137
+F010893 DFHMDF POS=(07,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0138
+               PICOUT='9999/99/99',                                    XMDST0139
+               COLOR=BLUE                                               MDST0140
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0141
+F010904 DFHMDF POS=(07,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0142
+               COLOR=BLUE                                               MDST0143
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0144
+F010915 DFHMDF POS=(07,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0145
+               COLOR=BLUE                                               MDST0146
+* CBLDNM LABEL=LIST-SELECT                                              MDST0147
+F010925 DFHMDF POS=(08,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0148
+               COLOR=YELLOW,                                           XMDST0149
+               HILIGHT=UNDERLINE                                        MDST0150
+        DFHMDF POS=(08,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0151
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0152
+F010929 DFHMDF POS=(08,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0153
+               COLOR=YELLOW                                             MDST0154
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0155
+F010957 DFHMDF POS=(08,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0156
+               COLOR=NEUTRAL                                            MDST0157
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0158
+F011010 DFHMDF POS=(08,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0159
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0160
+               COLOR=BLUE                                               MDST0161
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0162
+F011025 DFHMDF POS=(08,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0163
+               PICOUT='9999/99/99',                                    XMDST0164
+               COLOR=BLUE                                               MDST0165
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0166
+F011036 DFHMDF POS=(08,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0167
+               COLOR=BLUE                                               MDST0168
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0169
+F011047 DFHMDF POS=(08,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0170
+               COLOR=BLUE                                               MDST0171
+* CBLDNM LABEL=LIST-SELECT                                              MDST0172
+F011057 DFHMDF POS=(09,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0173
+               COLOR=YELLOW,                                           XMDST0174
+               HILIGHT=UNDERLINE                                        MDST0175
+        DFHMDF POS=(09,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0176
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0177
+F011061 DFHMDF POS=(09,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0178
+               COLOR=YELLOW                                             MDST0179
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0180
+F011089 DFHMDF POS=(09,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0181
+               COLOR=NEUTRAL                                            MDST0182
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0183
+F011142 DFHMDF POS=(09,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0184
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0185
+               COLOR=BLUE                                               MDST0186
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0187
+F011157 DFHMDF POS=(09,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0188
+               PICOUT='9999/99/99',                                    XMDST0189
+               COLOR=BLUE                                               MDST0190
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0191
+F011168 DFHMDF POS=(09,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0192
+               COLOR=BLUE                                               MDST0193
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0194
+F011179 DFHMDF POS=(09,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0195
+               COLOR=BLUE                                               MDST0196
+* CBLDNM LABEL=LIST-SELECT                                              MDST0197
+F011189 DFHMDF POS=(10,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0198
+               COLOR=YELLOW,                                           XMDST0199
+               HILIGHT=UNDERLINE                                        MDST0200
+        DFHMDF POS=(10,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0201
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0202
+F011193 DFHMDF POS=(10,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0203
+               COLOR=YELLOW                                             MDST0204
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0205
+F011221 DFHMDF POS=(10,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0206
+               COLOR=NEUTRAL                                            MDST0207
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0208
+F011274 DFHMDF POS=(10,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0209
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0210
+               COLOR=BLUE                                               MDST0211
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0212
+F011289 DFHMDF POS=(10,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0213
+               PICOUT='9999/99/99',                                    XMDST0214
+               COLOR=BLUE                                               MDST0215
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0216
+F011300 DFHMDF POS=(10,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0217
+               COLOR=BLUE                                               MDST0218
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0219
+F011311 DFHMDF POS=(10,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0220
+               COLOR=BLUE                                               MDST0221
+* CBLDNM LABEL=LIST-SELECT                                              MDST0222
+F011321 DFHMDF POS=(11,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0223
+               COLOR=YELLOW,                                           XMDST0224
+               HILIGHT=UNDERLINE                                        MDST0225
+        DFHMDF POS=(11,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0226
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0227
+F011325 DFHMDF POS=(11,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0228
+               COLOR=YELLOW                                             MDST0229
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0230
+F011353 DFHMDF POS=(11,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0231
+               COLOR=NEUTRAL                                            MDST0232
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0233
+F011406 DFHMDF POS=(11,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0234
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0235
+               COLOR=BLUE                                               MDST0236
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0237
+F011421 DFHMDF POS=(11,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0238
+               PICOUT='9999/99/99',                                    XMDST0239
+               COLOR=BLUE                                               MDST0240
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0241
+F011432 DFHMDF POS=(11,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0242
+               COLOR=BLUE                                               MDST0243
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0244
+F011443 DFHMDF POS=(11,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0245
+               COLOR=BLUE                                               MDST0246
+* CBLDNM LABEL=LIST-SELECT                                              MDST0247
+F011453 DFHMDF POS=(12,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0248
+               COLOR=YELLOW,                                           XMDST0249
+               HILIGHT=UNDERLINE                                        MDST0250
+        DFHMDF POS=(12,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0251
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0252
+F011457 DFHMDF POS=(12,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0253
+               COLOR=YELLOW                                             MDST0254
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0255
+F011485 DFHMDF POS=(12,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0256
+               COLOR=NEUTRAL                                            MDST0257
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0258
+F011538 DFHMDF POS=(12,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0259
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0260
+               COLOR=BLUE                                               MDST0261
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0262
+F011553 DFHMDF POS=(12,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0263
+               PICOUT='9999/99/99',                                    XMDST0264
+               COLOR=BLUE                                               MDST0265
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0266
+F011564 DFHMDF POS=(12,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0267
+               COLOR=BLUE                                               MDST0268
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0269
+F011575 DFHMDF POS=(12,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0270
+               COLOR=BLUE                                               MDST0271
+* CBLDNM LABEL=LIST-SELECT                                              MDST0272
+F011585 DFHMDF POS=(13,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0273
+               COLOR=YELLOW,                                           XMDST0274
+               HILIGHT=UNDERLINE                                        MDST0275
+        DFHMDF POS=(13,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0276
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0277
+F011589 DFHMDF POS=(13,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0278
+               COLOR=YELLOW                                             MDST0279
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0280
+F011617 DFHMDF POS=(13,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0281
+               COLOR=NEUTRAL                                            MDST0282
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0283
+F011670 DFHMDF POS=(13,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0284
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0285
+               COLOR=BLUE                                               MDST0286
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0287
+F011685 DFHMDF POS=(13,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0288
+               PICOUT='9999/99/99',                                    XMDST0289
+               COLOR=BLUE                                               MDST0290
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0291
+F011696 DFHMDF POS=(13,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0292
+               COLOR=BLUE                                               MDST0293
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0294
+F011707 DFHMDF POS=(13,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0295
+               COLOR=BLUE                                               MDST0296
+* CBLDNM LABEL=LIST-SELECT                                              MDST0297
+F011717 DFHMDF POS=(14,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0298
+               COLOR=YELLOW,                                           XMDST0299
+               HILIGHT=UNDERLINE                                        MDST0300
+        DFHMDF POS=(14,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0301
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0302
+F011721 DFHMDF POS=(14,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0303
+               COLOR=YELLOW                                             MDST0304
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0305
+F011749 DFHMDF POS=(14,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0306
+               COLOR=NEUTRAL                                            MDST0307
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0308
+F011802 DFHMDF POS=(14,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0309
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0310
+               COLOR=BLUE                                               MDST0311
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0312
+F011817 DFHMDF POS=(14,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0313
+               PICOUT='9999/99/99',                                    XMDST0314
+               COLOR=BLUE                                               MDST0315
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0316
+F011828 DFHMDF POS=(14,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0317
+               COLOR=BLUE                                               MDST0318
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0319
+F011839 DFHMDF POS=(14,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0320
+               COLOR=BLUE                                               MDST0321
+* CBLDNM LABEL=LIST-SELECT                                              MDST0322
+F011849 DFHMDF POS=(15,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0323
+               COLOR=YELLOW,                                           XMDST0324
+               HILIGHT=UNDERLINE                                        MDST0325
+        DFHMDF POS=(15,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0326
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0327
+F011853 DFHMDF POS=(15,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0328
+               COLOR=YELLOW                                             MDST0329
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0330
+F011881 DFHMDF POS=(15,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0331
+               COLOR=NEUTRAL                                            MDST0332
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0333
+F011934 DFHMDF POS=(15,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0334
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0335
+               COLOR=BLUE                                               MDST0336
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0337
+F011949 DFHMDF POS=(15,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0338
+               PICOUT='9999/99/99',                                    XMDST0339
+               COLOR=BLUE                                               MDST0340
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0341
+F011960 DFHMDF POS=(15,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0342
+               COLOR=BLUE                                               MDST0343
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0344
+F011971 DFHMDF POS=(15,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0345
+               COLOR=BLUE                                               MDST0346
+* CBLDNM LABEL=LIST-SELECT                                              MDST0347
+F011981 DFHMDF POS=(16,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0348
+               COLOR=YELLOW,                                           XMDST0349
+               HILIGHT=UNDERLINE                                        MDST0350
+        DFHMDF POS=(16,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0351
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0352
+F011985 DFHMDF POS=(16,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0353
+               COLOR=YELLOW                                             MDST0354
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0355
+F012013 DFHMDF POS=(16,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0356
+               COLOR=NEUTRAL                                            MDST0357
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0358
+F012066 DFHMDF POS=(16,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0359
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0360
+               COLOR=BLUE                                               MDST0361
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0362
+F012081 DFHMDF POS=(16,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0363
+               PICOUT='9999/99/99',                                    XMDST0364
+               COLOR=BLUE                                               MDST0365
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0366
+F012092 DFHMDF POS=(16,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0367
+               COLOR=BLUE                                               MDST0368
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0369
+F012103 DFHMDF POS=(16,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0370
+               COLOR=BLUE                                               MDST0371
+* CBLDNM LABEL=LIST-SELECT                                              MDST0372
+F012113 DFHMDF POS=(17,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0373
+               COLOR=YELLOW,                                           XMDST0374
+               HILIGHT=UNDERLINE                                        MDST0375
+        DFHMDF POS=(17,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0376
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0377
+F012117 DFHMDF POS=(17,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0378
+               COLOR=YELLOW                                             MDST0379
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0380
+F012145 DFHMDF POS=(17,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0381
+               COLOR=NEUTRAL                                            MDST0382
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0383
+F012198 DFHMDF POS=(17,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0384
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0385
+               COLOR=BLUE                                               MDST0386
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0387
+F012213 DFHMDF POS=(17,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0388
+               PICOUT='9999/99/99',                                    XMDST0389
+               COLOR=BLUE                                               MDST0390
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0391
+F012224 DFHMDF POS=(17,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0392
+               COLOR=BLUE                                               MDST0393
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0394
+F012235 DFHMDF POS=(17,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0395
+               COLOR=BLUE                                               MDST0396
+* CBLDNM LABEL=LIST-SELECT                                              MDST0397
+F012245 DFHMDF POS=(18,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0398
+               COLOR=YELLOW,                                           XMDST0399
+               HILIGHT=UNDERLINE                                        MDST0400
+        DFHMDF POS=(18,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0401
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0402
+F012249 DFHMDF POS=(18,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0403
+               COLOR=YELLOW                                             MDST0404
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0405
+F012277 DFHMDF POS=(18,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0406
+               COLOR=NEUTRAL                                            MDST0407
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0408
+F012330 DFHMDF POS=(18,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0409
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0410
+               COLOR=BLUE                                               MDST0411
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0412
+F012345 DFHMDF POS=(18,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0413
+               PICOUT='9999/99/99',                                    XMDST0414
+               COLOR=BLUE                                               MDST0415
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0416
+F012356 DFHMDF POS=(18,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0417
+               COLOR=BLUE                                               MDST0418
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0419
+F012367 DFHMDF POS=(18,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0420
+               COLOR=BLUE                                               MDST0421
+* CBLDNM LABEL=LIST-SELECT                                              MDST0422
+F012377 DFHMDF POS=(19,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0423
+               COLOR=YELLOW,                                           XMDST0424
+               HILIGHT=UNDERLINE                                        MDST0425
+        DFHMDF POS=(19,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0426
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0427
+F012381 DFHMDF POS=(19,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0428
+               COLOR=YELLOW                                             MDST0429
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0430
+F012409 DFHMDF POS=(19,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0431
+               COLOR=NEUTRAL                                            MDST0432
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0433
+F012462 DFHMDF POS=(19,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0434
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0435
+               COLOR=BLUE                                               MDST0436
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0437
+F012477 DFHMDF POS=(19,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0438
+               PICOUT='9999/99/99',                                    XMDST0439
+               COLOR=BLUE                                               MDST0440
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0441
+F012488 DFHMDF POS=(19,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0442
+               COLOR=BLUE                                               MDST0443
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0444
+F012499 DFHMDF POS=(19,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0445
+               COLOR=BLUE                                               MDST0446
+* CBLDNM LABEL=LIST-SELECT                                              MDST0447
+F012509 DFHMDF POS=(20,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0448
+               COLOR=YELLOW,                                           XMDST0449
+               HILIGHT=UNDERLINE                                        MDST0450
+        DFHMDF POS=(20,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0451
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0452
+F012513 DFHMDF POS=(20,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0453
+               COLOR=YELLOW                                             MDST0454
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0455
+F012541 DFHMDF POS=(20,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0456
+               COLOR=NEUTRAL                                            MDST0457
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0458
+F012594 DFHMDF POS=(20,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0459
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0460
+               COLOR=BLUE                                               MDST0461
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0462
+F012609 DFHMDF POS=(20,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0463
+               PICOUT='9999/99/99',                                    XMDST0464
+               COLOR=BLUE                                               MDST0465
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0466
+F012620 DFHMDF POS=(20,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0467
+               COLOR=BLUE                                               MDST0468
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0469
+F012631 DFHMDF POS=(20,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0470
+               COLOR=BLUE                                               MDST0471
+* CBLDNM LABEL=LIST-SELECT                                              MDST0472
+F012641 DFHMDF POS=(21,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0473
+               COLOR=YELLOW,                                           XMDST0474
+               HILIGHT=UNDERLINE                                        MDST0475
+        DFHMDF POS=(21,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0476
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0477
+F012645 DFHMDF POS=(21,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0478
+               COLOR=YELLOW                                             MDST0479
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0480
+F012673 DFHMDF POS=(21,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0481
+               COLOR=NEUTRAL                                            MDST0482
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0483
+F012726 DFHMDF POS=(21,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0484
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0485
+               COLOR=BLUE                                               MDST0486
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0487
+F012741 DFHMDF POS=(21,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0488
+               PICOUT='9999/99/99',                                    XMDST0489
+               COLOR=BLUE                                               MDST0490
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0491
+F012752 DFHMDF POS=(21,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0492
+               COLOR=BLUE                                               MDST0493
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0494
+F012763 DFHMDF POS=(21,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0495
+               COLOR=BLUE                                               MDST0496
+* CBLDNM LABEL=LIST-SELECT                                              MDST0497
+F012773 DFHMDF POS=(22,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0498
+               COLOR=YELLOW,                                           XMDST0499
+               HILIGHT=UNDERLINE                                        MDST0500
+        DFHMDF POS=(22,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0501
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0502
+F012777 DFHMDF POS=(22,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0503
+               COLOR=YELLOW                                             MDST0504
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0505
+F012805 DFHMDF POS=(22,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0506
+               COLOR=NEUTRAL                                            MDST0507
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0508
+F012858 DFHMDF POS=(22,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0509
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0510
+               COLOR=BLUE                                               MDST0511
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0512
+F012873 DFHMDF POS=(22,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0513
+               PICOUT='9999/99/99',                                    XMDST0514
+               COLOR=BLUE                                               MDST0515
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0516
+F012884 DFHMDF POS=(22,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0517
+               COLOR=BLUE                                               MDST0518
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0519
+F012895 DFHMDF POS=(22,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0520
+               COLOR=BLUE                                               MDST0521
+* CBLDNM LABEL=LIST-SELECT                                              MDST0522
+F012905 DFHMDF POS=(23,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0523
+               COLOR=YELLOW,                                           XMDST0524
+               HILIGHT=UNDERLINE                                        MDST0525
+        DFHMDF POS=(23,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0526
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0527
+F012909 DFHMDF POS=(23,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0528
+               COLOR=YELLOW                                             MDST0529
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0530
+F012937 DFHMDF POS=(23,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0531
+               COLOR=NEUTRAL                                            MDST0532
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0533
+F012990 DFHMDF POS=(23,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0534
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0535
+               COLOR=BLUE                                               MDST0536
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0537
+F013005 DFHMDF POS=(23,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0538
+               PICOUT='9999/99/99',                                    XMDST0539
+               COLOR=BLUE                                               MDST0540
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0541
+F013016 DFHMDF POS=(23,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0542
+               COLOR=BLUE                                               MDST0543
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0544
+F013027 DFHMDF POS=(23,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0545
+               COLOR=BLUE                                               MDST0546
+* CBLDNM LABEL=LIST-SELECT                                              MDST0547
+F013037 DFHMDF POS=(24,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0548
+               COLOR=YELLOW,                                           XMDST0549
+               HILIGHT=UNDERLINE                                        MDST0550
+        DFHMDF POS=(24,003),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0551
+* CBLDNM LABEL=LIST-GRPNAME                                             MDST0552
+F013041 DFHMDF POS=(24,005),LENGTH=025,ATTRB=(ASKIP,NORM,FSET),        XMDST0553
+               COLOR=YELLOW                                             MDST0554
+* CBLDNM LABEL=LIST-GRPDESC                                             MDST0555
+F013069 DFHMDF POS=(24,033),LENGTH=050,ATTRB=(ASKIP,NORM),             XMDST0556
+               COLOR=NEUTRAL                                            MDST0557
+* CBLDNM LABEL=LIST-USECOUNT                                            MDST0558
+F013122 DFHMDF POS=(24,086),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0559
+               PICOUT='ZZZ,ZZZ,ZZ9-',                                  XMDST0560
+               COLOR=BLUE                                               MDST0561
+* CBLDNM LABEL=LIST-LASTUSED                                            MDST0562
+F013137 DFHMDF POS=(24,101),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0563
+               PICOUT='9999/99/99',                                    XMDST0564
+               COLOR=BLUE                                               MDST0565
+* CBLDNM LABEL=LIST-LASTUSEBY                                           MDST0566
+F013148 DFHMDF POS=(24,112),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0567
+               COLOR=BLUE                                               MDST0568
+* CBLDNM LABEL=LIST-UPDATEDBY                                           MDST0569
+F013159 DFHMDF POS=(24,123),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0570
+               COLOR=BLUE                                               MDST0571
+* CBLDNM LABEL=LIST-MESSAGE                                             MDST0572
+F013169 DFHMDF POS=(25,001),LENGTH=078,ATTRB=(ASKIP,NORM),             XMDST0573
+               COLOR=RED                                                MDST0574
+        DFHMDF POS=(25,080),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0575
+        DFHMDF POS=(26,001),LENGTH=005,ATTRB=(ASKIP,NORM),             XMDST0576
+               INITIAL='Opts:',                                        XMDST0577
+               COLOR=TURQUOISE                                          MDST0578
+        DFHMDF POS=(26,007),LENGTH=001,ATTRB=(ASKIP,BRT),              XMDST0579
+               INITIAL='V',                                            XMDST0580
+               COLOR=NEUTRAL                                            MDST0581
+        DFHMDF POS=(26,009),LENGTH=007,ATTRB=(ASKIP,NORM),             XMDST0582
+               INITIAL='= View,',                                      XMDST0583
+               COLOR=PINK                                               MDST0584
+        DFHMDF POS=(26,017),LENGTH=001,ATTRB=(ASKIP,BRT),              XMDST0585
+               INITIAL='A',                                            XMDST0586
+               COLOR=NEUTRAL                                            MDST0587
+        DFHMDF POS=(26,019),LENGTH=006,ATTRB=(ASKIP,NORM),             XMDST0588
+               INITIAL='= Add,',                                       XMDST0589
+               COLOR=PINK                                               MDST0590
+        DFHMDF POS=(26,026),LENGTH=001,ATTRB=(ASKIP,BRT),              XMDST0591
+               INITIAL='C',                                            XMDST0592
+               COLOR=NEUTRAL                                            MDST0593
+        DFHMDF POS=(26,028),LENGTH=009,ATTRB=(ASKIP,NORM),             XMDST0594
+               INITIAL='= Change,',                                    XMDST0595
+               COLOR=PINK                                               MDST0596
+        DFHMDF POS=(26,038),LENGTH=001,ATTRB=(ASKIP,BRT),              XMDST0597
+               INITIAL='D',                                            XMDST0598
+               COLOR=NEUTRAL                                            MDST0599
+        DFHMDF POS=(26,040),LENGTH=009,ATTRB=(ASKIP,NORM),             XMDST0600
+               INITIAL='= Delete,',                                    XMDST0601
+               COLOR=PINK                                               MDST0602
+        DFHMDF POS=(26,050),LENGTH=001,ATTRB=(ASKIP,BRT),              XMDST0603
+               INITIAL='T',                                            XMDST0604
+               COLOR=NEUTRAL                                            MDST0605
+        DFHMDF POS=(26,052),LENGTH=013,ATTRB=(ASKIP,NORM),             XMDST0606
+               INITIAL='= Test group,',                                XMDST0607
+               COLOR=PINK                                               MDST0608
+        DFHMDF POS=(26,066),LENGTH=001,ATTRB=(ASKIP,BRT),              XMDST0609
+               INITIAL='X',                                            XMDST0610
+               COLOR=NEUTRAL                                            MDST0611
+        DFHMDF POS=(26,068),LENGTH=041,ATTRB=(ASKIP,NORM),             XMDST0612
+               INITIAL='= Transfer group name to previous screen.',    XMDST0613
+               COLOR=PINK                                               MDST0614
+        DFHMDF POS=(27,001),LENGTH=005,ATTRB=(ASKIP,NORM),             XMDST0615
+               INITIAL='Keys:',                                        XMDST0616
+               COLOR=TURQUOISE                                          MDST0617
+        DFHMDF POS=(27,007),LENGTH=002,ATTRB=(ASKIP,BRT),              XMDST0618
+               INITIAL='F1',                                           XMDST0619
+               COLOR=NEUTRAL                                            MDST0620
+        DFHMDF POS=(27,010),LENGTH=007,ATTRB=(ASKIP,NORM),             XMDST0621
+               INITIAL='= Help,',                                      XMDST0622
+               COLOR=PINK                                               MDST0623
+        DFHMDF POS=(27,018),LENGTH=002,ATTRB=(ASKIP,BRT),              XMDST0624
+               INITIAL='F3',                                           XMDST0625
+               COLOR=NEUTRAL                                            MDST0626
+        DFHMDF POS=(27,021),LENGTH=007,ATTRB=(ASKIP,NORM),             XMDST0627
+               INITIAL='= Exit,',                                      XMDST0628
+               COLOR=PINK                                               MDST0629
+        DFHMDF POS=(27,029),LENGTH=002,ATTRB=(ASKIP,BRT),              XMDST0630
+               INITIAL='F6',                                           XMDST0631
+               COLOR=NEUTRAL                                            MDST0632
+        DFHMDF POS=(27,032),LENGTH=013,ATTRB=(ASKIP,NORM),             XMDST0633
+               INITIAL='= First page,',                                XMDST0634
+               COLOR=PINK                                               MDST0635
+        DFHMDF POS=(27,046),LENGTH=002,ATTRB=(ASKIP,BRT),              XMDST0636
+               INITIAL='F7',                                           XMDST0637
+               COLOR=NEUTRAL                                            MDST0638
+        DFHMDF POS=(27,049),LENGTH=011,ATTRB=(ASKIP,NORM),             XMDST0639
+               INITIAL='= Previous,',                                  XMDST0640
+               COLOR=PINK                                               MDST0641
+        DFHMDF POS=(27,061),LENGTH=002,ATTRB=(ASKIP,BRT),              XMDST0642
+               INITIAL='F8',                                           XMDST0643
+               COLOR=NEUTRAL                                            MDST0644
+        DFHMDF POS=(27,064),LENGTH=007,ATTRB=(ASKIP,NORM),             XMDST0645
+               INITIAL='= Next,',                                      XMDST0646
+               COLOR=PINK                                               MDST0647
+        DFHMDF POS=(27,072),LENGTH=002,ATTRB=(ASKIP,BRT),              XMDST0648
+               INITIAL='F9',                                           XMDST0649
+               COLOR=NEUTRAL                                            MDST0650
+        DFHMDF POS=(27,075),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0651
+               INITIAL='= Last page,',                                 XMDST0652
+               COLOR=PINK                                               MDST0653
+        DFHMDF POS=(27,088),LENGTH=003,ATTRB=(ASKIP,BRT),              XMDST0654
+               INITIAL='F10',                                          XMDST0655
+               COLOR=NEUTRAL                                            MDST0656
+        DFHMDF POS=(27,092),LENGTH=016,ATTRB=(ASKIP,NORM),             XMDST0657
+               INITIAL='= Mail Messages.',                             XMDST0658
+               COLOR=PINK                                               MDST0659
+*                                                                       MDST0660
+        PRINT  ON,GEN                                                   MDST0661
+        TITLE  'D E T L M A P   ( 0 1 . 1 4 )   -   M F   M A I L   D IXMDST0662
+                S T R I B U T I O N   D E T A I L   M A P   '           MDST0663
+DETLMAP DFHMDI SIZE=(27,132)                                            MDST0664
+*              ROW=08,THRU=09,OCCURS=08                                 MDST0665
+        PRINT  ON,NOGEN                                                 MDST0666
+        DFHMDF POS=(01,001),LENGTH=004,ATTRB=(ASKIP,NORM),             XMDST0667
+               INITIAL='MDST',                                         XMDST0668
+               COLOR=BLUE                                               MDST0669
+* CBLDNM LABEL=DETL-COMPANY                                             MDST0670
+F020046 DFHMDF POS=(01,046),LENGTH=040,ATTRB=(ASKIP,BRT),              XMDST0671
+               COLOR=TURQUOISE                                          MDST0672
+* CBLDNM LABEL=DETL-SYSDATE                                             MDST0673
+F020121 DFHMDF POS=(01,121),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0674
+               COLOR=BLUE                                               MDST0675
+* CBLDNM LABEL=DETL-NETNAME                                             MDST0676
+F020133 DFHMDF POS=(02,001),LENGTH=010,ATTRB=(ASKIP,NORM),             XMDST0677
+               COLOR=BLUE                                               MDST0678
+        DFHMDF POS=(02,046),LENGTH=040,ATTRB=(ASKIP,BRT),              XMDST0679
+               INITIAL='Mainframe Mail Distribution Group Detail',     XMDST0680
+               COLOR=NEUTRAL                                            MDST0681
+* CBLDNM LABEL=DETL-SYSTIME                                             MDST0682
+F020253 DFHMDF POS=(02,121),LENGTH=008,ATTRB=(ASKIP,NORM),             XMDST0683
+               COLOR=BLUE                                               MDST0684
+        DFHMDF POS=(03,001),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0685
+        DFHMDF POS=(04,001),LENGTH=020,ATTRB=(ASKIP,NORM),             XMDST0686
+               INITIAL='Group name .........',                         XMDST0687
+               COLOR=TURQUOISE                                          MDST0688
+* CBLDNM LABEL=DETL-GRPNAME                                             MDST0689
+F020418 DFHMDF POS=(04,022),LENGTH=025,ATTRB=(UNPROT,NORM,FSET),       XMDST0690
+               COLOR=YELLOW                                             MDST0691
+        DFHMDF POS=(04,048),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0692
+        DFHMDF POS=(05,001),LENGTH=020,ATTRB=(ASKIP,NORM),             XMDST0693
+               INITIAL='Description ........',                         XMDST0694
+               COLOR=TURQUOISE                                          MDST0695
+* CBLDNM LABEL=DETL-GRPDESC                                             MDST0696
+F020550 DFHMDF POS=(05,022),LENGTH=050,ATTRB=(UNPROT,NORM,FSET),       XMDST0697
+               COLOR=GREEN                                              MDST0698
+        DFHMDF POS=(05,073),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0699
+        DFHMDF POS=(06,001),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0700
+        DFHMDF POS=(07,001),LENGTH=001,ATTRB=(ASKIP,NORM),             XMDST0701
+               INITIAL='O',                                            XMDST0702
+               COLOR=BLUE,                                             XMDST0703
+               HILIGHT=UNDERLINE                                        MDST0704
+        DFHMDF POS=(07,003),LENGTH=064,ATTRB=(ASKIP,NORM),             XMDST0705
+               INITIAL='Network or mainframe user id                   XMDST0706
+                                ',                                     XMDST0707
+               COLOR=BLUE,                                             XMDST0708
+               HILIGHT=UNDERLINE                                        MDST0709
+        DFHMDF POS=(07,068),LENGTH=064,ATTRB=(ASKIP,NORM),             XMDST0710
+               INITIAL='Optional email user name and (on second line) eXMDST0711
+               mail address',                                          XMDST0712
+               COLOR=BLUE,                                             XMDST0713
+               HILIGHT=UNDERLINE                                        MDST0714
+* CBLDNM LABEL=DETL-SELECT                                              MDST0715
+F020925 DFHMDF POS=(08,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0716
+               COLOR=YELLOW                                             MDST0717
+* CBLDNM LABEL=DETL-NETWORKID                                           MDST0718
+F020927 DFHMDF POS=(08,003),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0719
+               COLOR=YELLOW                                             MDST0720
+* CBLDNM LABEL=DETL-DISTNAME                                            MDST0721
+F020992 DFHMDF POS=(08,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0722
+               COLOR=GREEN                                              MDST0723
+        DFHMDF POS=(09,001),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0724
+* CBLDNM LABEL=DETL-RECPTYPE-LABEL                                      MDST0725
+F021103 DFHMDF POS=(09,047),LENGTH=015,ATTRB=(ASKIP,NORM),             XMDST0726
+               INITIAL='Recipient type:',                              XMDST0727
+               COLOR=TURQUOISE                                          MDST0728
+* CBLDNM LABEL=DETL-RECPTYPE                                            MDST0729
+F021119 DFHMDF POS=(09,063),LENGTH=004,ATTRB=(UNPROT,NORM),            XMDST0730
+               COLOR=GREEN                                              MDST0731
+* CBLDNM LABEL=DETL-DISTADDR                                            MDST0732
+F021124 DFHMDF POS=(09,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0733
+               COLOR=GREEN                                              MDST0734
+* CBLDNM LABEL=DETL-SELECT                                              MDST0735
+F021189 DFHMDF POS=(10,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0736
+               COLOR=YELLOW                                             MDST0737
+* CBLDNM LABEL=DETL-NETWORKID                                           MDST0738
+F021191 DFHMDF POS=(10,003),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0739
+               COLOR=YELLOW                                             MDST0740
+* CBLDNM LABEL=DETL-DISTNAME                                            MDST0741
+F021256 DFHMDF POS=(10,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0742
+               COLOR=GREEN                                              MDST0743
+        DFHMDF POS=(11,001),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0744
+* CBLDNM LABEL=DETL-RECPTYPE-LABEL                                      MDST0745
+F021367 DFHMDF POS=(11,047),LENGTH=015,ATTRB=(ASKIP,NORM),             XMDST0746
+               INITIAL='Recipient type:',                              XMDST0747
+               COLOR=TURQUOISE                                          MDST0748
+* CBLDNM LABEL=DETL-RECPTYPE                                            MDST0749
+F021383 DFHMDF POS=(11,063),LENGTH=004,ATTRB=(UNPROT,NORM),            XMDST0750
+               COLOR=GREEN                                              MDST0751
+* CBLDNM LABEL=DETL-DISTADDR                                            MDST0752
+F021388 DFHMDF POS=(11,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0753
+               COLOR=GREEN                                              MDST0754
+* CBLDNM LABEL=DETL-SELECT                                              MDST0755
+F021453 DFHMDF POS=(12,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0756
+               COLOR=YELLOW                                             MDST0757
+* CBLDNM LABEL=DETL-NETWORKID                                           MDST0758
+F021455 DFHMDF POS=(12,003),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0759
+               COLOR=YELLOW                                             MDST0760
+* CBLDNM LABEL=DETL-DISTNAME                                            MDST0761
+F021520 DFHMDF POS=(12,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0762
+               COLOR=GREEN                                              MDST0763
+        DFHMDF POS=(13,001),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0764
+* CBLDNM LABEL=DETL-RECPTYPE-LABEL                                      MDST0765
+F021631 DFHMDF POS=(13,047),LENGTH=015,ATTRB=(ASKIP,NORM),             XMDST0766
+               INITIAL='Recipient type:',                              XMDST0767
+               COLOR=TURQUOISE                                          MDST0768
+* CBLDNM LABEL=DETL-RECPTYPE                                            MDST0769
+F021647 DFHMDF POS=(13,063),LENGTH=004,ATTRB=(UNPROT,NORM),            XMDST0770
+               COLOR=GREEN                                              MDST0771
+* CBLDNM LABEL=DETL-DISTADDR                                            MDST0772
+F021652 DFHMDF POS=(13,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0773
+               COLOR=GREEN                                              MDST0774
+* CBLDNM LABEL=DETL-SELECT                                              MDST0775
+F021717 DFHMDF POS=(14,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0776
+               COLOR=YELLOW                                             MDST0777
+* CBLDNM LABEL=DETL-NETWORKID                                           MDST0778
+F021719 DFHMDF POS=(14,003),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0779
+               COLOR=YELLOW                                             MDST0780
+* CBLDNM LABEL=DETL-DISTNAME                                            MDST0781
+F021784 DFHMDF POS=(14,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0782
+               COLOR=GREEN                                              MDST0783
+        DFHMDF POS=(15,001),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0784
+* CBLDNM LABEL=DETL-RECPTYPE-LABEL                                      MDST0785
+F021895 DFHMDF POS=(15,047),LENGTH=015,ATTRB=(ASKIP,NORM),             XMDST0786
+               INITIAL='Recipient type:',                              XMDST0787
+               COLOR=TURQUOISE                                          MDST0788
+* CBLDNM LABEL=DETL-RECPTYPE                                            MDST0789
+F021911 DFHMDF POS=(15,063),LENGTH=004,ATTRB=(UNPROT,NORM),            XMDST0790
+               COLOR=GREEN                                              MDST0791
+* CBLDNM LABEL=DETL-DISTADDR                                            MDST0792
+F021916 DFHMDF POS=(15,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0793
+               COLOR=GREEN                                              MDST0794
+* CBLDNM LABEL=DETL-SELECT                                              MDST0795
+F021981 DFHMDF POS=(16,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0796
+               COLOR=YELLOW                                             MDST0797
+* CBLDNM LABEL=DETL-NETWORKID                                           MDST0798
+F021983 DFHMDF POS=(16,003),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0799
+               COLOR=YELLOW                                             MDST0800
+* CBLDNM LABEL=DETL-DISTNAME                                            MDST0801
+F022048 DFHMDF POS=(16,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0802
+               COLOR=GREEN                                              MDST0803
+        DFHMDF POS=(17,001),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0804
+* CBLDNM LABEL=DETL-RECPTYPE-LABEL                                      MDST0805
+F022159 DFHMDF POS=(17,047),LENGTH=015,ATTRB=(ASKIP,NORM),             XMDST0806
+               INITIAL='Recipient type:',                              XMDST0807
+               COLOR=TURQUOISE                                          MDST0808
+* CBLDNM LABEL=DETL-RECPTYPE                                            MDST0809
+F022175 DFHMDF POS=(17,063),LENGTH=004,ATTRB=(UNPROT,NORM),            XMDST0810
+               COLOR=GREEN                                              MDST0811
+* CBLDNM LABEL=DETL-DISTADDR                                            MDST0812
+F022180 DFHMDF POS=(17,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0813
+               COLOR=GREEN                                              MDST0814
+* CBLDNM LABEL=DETL-SELECT                                              MDST0815
+F022245 DFHMDF POS=(18,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0816
+               COLOR=YELLOW                                             MDST0817
+* CBLDNM LABEL=DETL-NETWORKID                                           MDST0818
+F022247 DFHMDF POS=(18,003),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0819
+               COLOR=YELLOW                                             MDST0820
+* CBLDNM LABEL=DETL-DISTNAME                                            MDST0821
+F022312 DFHMDF POS=(18,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0822
+               COLOR=GREEN                                              MDST0823
+        DFHMDF POS=(19,001),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0824
+* CBLDNM LABEL=DETL-RECPTYPE-LABEL                                      MDST0825
+F022423 DFHMDF POS=(19,047),LENGTH=015,ATTRB=(ASKIP,NORM),             XMDST0826
+               INITIAL='Recipient type:',                              XMDST0827
+               COLOR=TURQUOISE                                          MDST0828
+* CBLDNM LABEL=DETL-RECPTYPE                                            MDST0829
+F022439 DFHMDF POS=(19,063),LENGTH=004,ATTRB=(UNPROT,NORM),            XMDST0830
+               COLOR=GREEN                                              MDST0831
+* CBLDNM LABEL=DETL-DISTADDR                                            MDST0832
+F022444 DFHMDF POS=(19,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0833
+               COLOR=GREEN                                              MDST0834
+* CBLDNM LABEL=DETL-SELECT                                              MDST0835
+F022509 DFHMDF POS=(20,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0836
+               COLOR=YELLOW                                             MDST0837
+* CBLDNM LABEL=DETL-NETWORKID                                           MDST0838
+F022511 DFHMDF POS=(20,003),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0839
+               COLOR=YELLOW                                             MDST0840
+* CBLDNM LABEL=DETL-DISTNAME                                            MDST0841
+F022576 DFHMDF POS=(20,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0842
+               COLOR=GREEN                                              MDST0843
+        DFHMDF POS=(21,001),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0844
+* CBLDNM LABEL=DETL-RECPTYPE-LABEL                                      MDST0845
+F022687 DFHMDF POS=(21,047),LENGTH=015,ATTRB=(ASKIP,NORM),             XMDST0846
+               INITIAL='Recipient type:',                              XMDST0847
+               COLOR=TURQUOISE                                          MDST0848
+* CBLDNM LABEL=DETL-RECPTYPE                                            MDST0849
+F022703 DFHMDF POS=(21,063),LENGTH=004,ATTRB=(UNPROT,NORM),            XMDST0850
+               COLOR=GREEN                                              MDST0851
+* CBLDNM LABEL=DETL-DISTADDR                                            MDST0852
+F022708 DFHMDF POS=(21,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0853
+               COLOR=GREEN                                              MDST0854
+* CBLDNM LABEL=DETL-SELECT                                              MDST0855
+F022773 DFHMDF POS=(22,001),LENGTH=001,ATTRB=(UNPROT,NORM),            XMDST0856
+               COLOR=YELLOW                                             MDST0857
+* CBLDNM LABEL=DETL-NETWORKID                                           MDST0858
+F022775 DFHMDF POS=(22,003),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0859
+               COLOR=YELLOW                                             MDST0860
+* CBLDNM LABEL=DETL-DISTNAME                                            MDST0861
+F022840 DFHMDF POS=(22,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0862
+               COLOR=GREEN                                              MDST0863
+        DFHMDF POS=(23,001),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0864
+* CBLDNM LABEL=DETL-RECPTYPE-LABEL                                      MDST0865
+F022951 DFHMDF POS=(23,047),LENGTH=015,ATTRB=(ASKIP,NORM),             XMDST0866
+               INITIAL='Recipient type:',                              XMDST0867
+               COLOR=TURQUOISE                                          MDST0868
+* CBLDNM LABEL=DETL-RECPTYPE                                            MDST0869
+F022967 DFHMDF POS=(23,063),LENGTH=004,ATTRB=(UNPROT,NORM),            XMDST0870
+               COLOR=GREEN                                              MDST0871
+* CBLDNM LABEL=DETL-DISTADDR                                            MDST0872
+F022972 DFHMDF POS=(23,068),LENGTH=064,ATTRB=(UNPROT,NORM),            XMDST0873
+               COLOR=GREEN                                              MDST0874
+        DFHMDF POS=(24,001),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0875
+* CBLDNM LABEL=DETL-MESSAGE                                             MDST0876
+F023169 DFHMDF POS=(25,001),LENGTH=078,ATTRB=(ASKIP,NORM),             XMDST0877
+               COLOR=RED                                                MDST0878
+        DFHMDF POS=(25,080),LENGTH=001,ATTRB=(ASKIP,BRT),INITIAL=' '    MDST0879
+* CBLDNM LABEL=DETL-OPTIONS-LABEL                                       MDST0880
+F023301 DFHMDF POS=(26,001),LENGTH=005,ATTRB=(ASKIP,NORM),             XMDST0881
+               INITIAL='Opts:',                                        XMDST0882
+               COLOR=TURQUOISE                                          MDST0883
+* CBLDNM LABEL=DETL-DELETE-OPT                                          MDST0884
+F023307 DFHMDF POS=(26,007),LENGTH=001,ATTRB=(ASKIP,BRT),              XMDST0885
+               INITIAL='D',                                            XMDST0886
+               COLOR=NEUTRAL                                            MDST0887
+* CBLDNM LABEL=DETL-DELETE-TEXT                                         MDST0888
+F023309 DFHMDF POS=(26,009),LENGTH=015,ATTRB=(ASKIP,NORM),             XMDST0889
+               INITIAL='= Delete entry.',                              XMDST0890
+               COLOR=PINK                                               MDST0891
+        DFHMDF POS=(27,001),LENGTH=005,ATTRB=(ASKIP,NORM),             XMDST0892
+               INITIAL='Keys:',                                        XMDST0893
+               COLOR=TURQUOISE                                          MDST0894
+        DFHMDF POS=(27,007),LENGTH=002,ATTRB=(ASKIP,BRT),              XMDST0895
+               INITIAL='F1',                                           XMDST0896
+               COLOR=NEUTRAL                                            MDST0897
+        DFHMDF POS=(27,010),LENGTH=007,ATTRB=(ASKIP,NORM),             XMDST0898
+               INITIAL='= Help,',                                      XMDST0899
+               COLOR=PINK                                               MDST0900
+        DFHMDF POS=(27,018),LENGTH=002,ATTRB=(ASKIP,BRT),              XMDST0901
+               INITIAL='F3',                                           XMDST0902
+               COLOR=NEUTRAL                                            MDST0903
+        DFHMDF POS=(27,021),LENGTH=006,ATTRB=(ASKIP,NORM),             XMDST0904
+               INITIAL='= End,',                                       XMDST0905
+               COLOR=PINK                                               MDST0906
+* CBLDNM LABEL=DETL-PROMPT-KEY                                          MDST0907
+F023460 DFHMDF POS=(27,028),LENGTH=002,ATTRB=(ASKIP,BRT),              XMDST0908
+               INITIAL='F4',                                           XMDST0909
+               COLOR=NEUTRAL                                            MDST0910
+* CBLDNM LABEL=DETL-PROMPT-TEXT                                         MDST0911
+F023463 DFHMDF POS=(27,031),LENGTH=009,ATTRB=(ASKIP,NORM),             XMDST0912
+               INITIAL='= Prompt,',                                    XMDST0913
+               COLOR=PINK                                               MDST0914
+* CBLDNM LABEL=DETL-UPDATE-KEY                                          MDST0915
+F023473 DFHMDF POS=(27,041),LENGTH=002,ATTRB=(ASKIP,BRT),              XMDST0916
+               INITIAL='F5',                                           XMDST0917
+               COLOR=NEUTRAL                                            MDST0918
+* CBLDNM LABEL=DETL-UPDATE-TEXT                                         MDST0919
+F023476 DFHMDF POS=(27,044),LENGTH=009,ATTRB=(ASKIP,NORM),             XMDST0920
+               INITIAL='= Update,',                                    XMDST0921
+               COLOR=PINK                                               MDST0922
+        DFHMDF POS=(27,054),LENGTH=005,ATTRB=(ASKIP,BRT),              XMDST0923
+               INITIAL='F6/F7',                                        XMDST0924
+               COLOR=NEUTRAL                                            MDST0925
+        DFHMDF POS=(27,060),LENGTH=013,ATTRB=(ASKIP,NORM),             XMDST0926
+               INITIAL='= First/Prev,',                                XMDST0927
+               COLOR=PINK                                               MDST0928
+        DFHMDF POS=(27,074),LENGTH=005,ATTRB=(ASKIP,BRT),              XMDST0929
+               INITIAL='F8/F9',                                        XMDST0930
+               COLOR=NEUTRAL                                            MDST0931
+        DFHMDF POS=(27,080),LENGTH=012,ATTRB=(ASKIP,NORM),             XMDST0932
+               INITIAL='= Next/Last.',                                 XMDST0933
+               COLOR=PINK                                               MDST0934
+*                                                                       MDST0935
+        PRINT  ON,GEN                                                   MDST0936
+        TITLE  'W A I T W I N   ( 0 1 . 0 0 )   -   G E N E R A T I N GXMDST0937
+                . . .   M E S S A G E   W I N D O W         '           MDST0938
+WAITWIN DFHMDI SIZE=(27,132)                                            MDST0939
+        PRINT  ON,NOGEN                                                 MDST0940
+        DFHMDF POS=(11,055),LENGTH=021,ATTRB=(ASKIP,NORM),             XMDST0941
+               XINIT=404040404040404040404040404040404040404040,       XMDST0942
+               COLOR=TURQUOISE,                                        XMDST0943
+               HILIGHT=REVERSE                                          MDST0944
+        DFHMDF POS=(11,077),LENGTH=000,ATTRB=(ASKIP,NORM),             XMDST0945
+               COLOR=BLUE                                               MDST0946
+        DFHMDF POS=(12,055),LENGTH=002,ATTRB=(ASKIP,NORM),             XMDST0947
+               XINIT=4040,                                             XMDST0948
+               COLOR=TURQUOISE,                                        XMDST0949
+               HILIGHT=REVERSE                                          MDST0950
+        DFHMDF POS=(12,058),LENGTH=015,ATTRB=(ASKIP,NORM),             XMDST0951
+               XINIT=404040404040404040404040404040                     MDST0952
+        DFHMDF POS=(12,074),LENGTH=002,ATTRB=(ASKIP,NORM),             XMDST0953
+               XINIT=4040,                                             XMDST0954
+               COLOR=TURQUOISE,                                        XMDST0955
+               HILIGHT=REVERSE                                          MDST0956
+        DFHMDF POS=(12,077),LENGTH=000,ATTRB=(ASKIP,NORM),             XMDST0957
+               COLOR=BLUE                                               MDST0958
+        DFHMDF POS=(13,055),LENGTH=002,ATTRB=(ASKIP,NORM),             XMDST0959
+               XINIT=4040,                                             XMDST0960
+               COLOR=TURQUOISE,                                        XMDST0961
+               HILIGHT=REVERSE                                          MDST0962
+* CBLDNM LABEL=WAIT-MESSAGE                                             MDST0963
+F031642 DFHMDF POS=(13,058),LENGTH=015,ATTRB=(ASKIP,BRT),              XMDST0964
+               INITIAL='Generating...',                                XMDST0965
+               COLOR=RED,                                              XMDST0966
+               HILIGHT=BLINK                                            MDST0967
+        DFHMDF POS=(13,074),LENGTH=002,ATTRB=(ASKIP,NORM),             XMDST0968
+               XINIT=4040,                                             XMDST0969
+               COLOR=TURQUOISE,                                        XMDST0970
+               HILIGHT=REVERSE                                          MDST0971
+        DFHMDF POS=(13,077),LENGTH=000,ATTRB=(ASKIP,NORM),             XMDST0972
+               COLOR=BLUE                                               MDST0973
+        DFHMDF POS=(14,055),LENGTH=002,ATTRB=(ASKIP,NORM),             XMDST0974
+               XINIT=4040,                                             XMDST0975
+               COLOR=TURQUOISE,                                        XMDST0976
+               HILIGHT=REVERSE                                          MDST0977
+        DFHMDF POS=(14,058),LENGTH=015,ATTRB=(ASKIP,NORM),             XMDST0978
+               XINIT=404040404040404040404040404040                     MDST0979
+        DFHMDF POS=(14,074),LENGTH=002,ATTRB=(ASKIP,NORM),             XMDST0980
+               XINIT=4040,                                             XMDST0981
+               COLOR=TURQUOISE,                                        XMDST0982
+               HILIGHT=REVERSE                                          MDST0983
+        DFHMDF POS=(14,077),LENGTH=000,ATTRB=(ASKIP,NORM),             XMDST0984
+               COLOR=BLUE                                               MDST0985
+        DFHMDF POS=(15,055),LENGTH=021,ATTRB=(ASKIP,NORM),             XMDST0986
+               XINIT=404040404040404040404040404040404040404040,       XMDST0987
+               COLOR=TURQUOISE,                                        XMDST0988
+               HILIGHT=REVERSE                                          MDST0989
+        DFHMDF POS=(15,077),LENGTH=000,ATTRB=(ASKIP,NORM),             XMDST0990
+               COLOR=BLUE                                               MDST0991
+*                                                                       MDST0992
+        PRINT  ON,GEN                                                   MDST0993
+        TITLE  'M D S T M S     ( 0 1 . 1 0 )   -   M F   M A I L   D IXMDST0994
+                S T R I B U T I O N   M A I N T E N A N C E '           MDST0995
+        DFHMSD TYPE=FINAL                                               MDST0996
