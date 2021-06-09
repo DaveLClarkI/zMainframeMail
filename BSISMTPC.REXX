@@ -108,7 +108,7 @@
 /* ----------------------------------------------------------------- */
 
   "EXECIO" chunk_size "DISKR SYSIPT ( OPEN STEM card. )";
-  If rc ¬= 0 Then Do
+  If rc Â¬= 0 Then Do
     If rc == 2 Then Do
       eof_cards = _True;
     End
@@ -507,7 +507,7 @@
   Do Forever                      /* stream text into body of email */
     n = n + 1;
     If n <= MTPtext.0,
-    &  MTPtext.n ¬= 'QUIT' Then Do /* accumulate text into a buffer */
+    &  MTPtext.n Â¬= 'QUIT' Then Do /* accumulate text into a buffer */
       chunk  = Translate(Strip(MTPtext.n,'Trailing'),'40'x,'41'x);
       buffer = buffer||chunk;
     End
@@ -523,7 +523,7 @@
         Drop MTPtext.;
         If eof_cards Then Leave;  /* get out if no more text cards */
         "EXECIO" chunk_size "DISKR SYSIPT ( STEM MTPtext. )";
-        If rc ¬= 0 Then Do
+        If rc Â¬= 0 Then Do
           If rc == 2 Then Do
             eof_cards = _True;     /* set flag at end of text cards */
           End
